@@ -1,31 +1,11 @@
-app:
-  auth:
-    header-scheme-name: authorization
-    token-type: Bearer
-    aceess-secret: DeaguGreenArtAcademyClass502ForJavaSpringBoot
-    accessToken-expiry: 200000
-    refresh-secret: ForJavaSpringBootClass502DaeguGreenArtAcademy
-    refreshToken-expiry: 1296000000
-    redis-access-black-key: "Z-AT-BLACK"
-    redis-refresh-key: "Z-RT"
-  oauth2:
-    authorized-redirect-uris:
-      - http://localhost:8082/oauth/redirect
-      - http://192.168.0.100:8082/oauth/redirect
 
 # mybatis config
 mybatis:
-  type-aliases-package: com.green.campingsmore
+  type-aliases-package: com.green.camping-smore
   mapper-locations: classpath:mapper/**/*.xml
 
 # ??? ??? ???? ?? secret key?? ?? HS256 ????? ???? ??, 256???? ????.
 # ???? ??? ? 8bit ??? 32?? ???? ??.
-springboot:
-  jwt:
-    access-secret: DeaguGreenArtAcademyClass502ForJavaSpringBootaaaasdf
-    refresh-secret: HelloWorldRefreshTokenCreateBySecretHaHaaasdfasdf
-    header-scheme-name: Authorization
-    token-type: Bearer
 
 spring:
   thymeleaf:
@@ -40,8 +20,8 @@ spring:
       max-request-size: 100MB
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_e
-    username: team_e
+    url: jdbc:mariadb://localhost:3306/team_e_test
+    username: root
     password: green502
   jpa:
     hibernate:
@@ -50,10 +30,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  data:
-    redis:
-      host: 192.168.0.144
-      port: 6379
+
 
 file:
   dir: /home/download/
@@ -64,35 +41,4 @@ springdoc:
 
 server:
   port: 8080
-# KaKao
-KaKao:
-  Auth: 0fc03c2467ca0d7ca9999c9d1ed64911
 
-
-# Naver
-Naver:
-  YOUR_CLIENT_ID: ncAR9prYDibH9NS7yQuA
-  YOUR_CLIENT_SECRET: vl2B4Z4tvO
-  NAVER_ID: green502test@naver.com
-  SMTP: smtp.naver.com
-  MAIL_PORT: 465
-
-
----
-
-spring:
-  config:
-    activate:
-      on-profile: test
-  datasource:
-    jdbc-url: jdbc:mariadb://localhost:3306/campingsmore_test
-    username: root
-    password: green502
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:init/schema.sql
-      data-locations: classpath:init/data.sql
-      encoding: UTF-8
-  jpa:
-    defer-datasource-initialization: true
