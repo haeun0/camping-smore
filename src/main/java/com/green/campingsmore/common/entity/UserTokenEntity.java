@@ -9,7 +9,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "review")
+@Table(name = "user_token")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
