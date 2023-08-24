@@ -1,4 +1,4 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,25 +8,23 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "review")
+@Table(name = "comment")
 @Data
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @SuperBuilder
-public class UserTokenEntity extends BaseEntity{
+@NoArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class ItemDetailPicEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
-    private Long iuser;
+    private Long idetail;
 
-    @Id
-    @Column(nullable = false, length = 15)
-    private String ip;
-
-    @Column(nullable = false, length = 200)
-    private String accessToken;
+    @JoinColumn(name = "iitem")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private ItemEntity itemEntity;
 
     @Column(nullable = false, length = 200)
-    private String refreshToken;
+    private String pic;
 }

@@ -1,36 +1,39 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "wishlist")
+@Table(name = "shipping_address")
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @ToString(callSuper = true)
 @SuperBuilder
-public class WishlistEntity extends BaseEntity{
+public class ShippingAddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
-    private Long iwish;
+    private Long iaddress;
 
     @JoinColumn(name = "iuser")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity userEntity;
 
-    @JoinColumn(name = "iitem")
-    @ManyToOne
-    private ItemEntity itemEntity;
+    @Column(nullable = false, length = 100)
+    private String address;
 
-    @ColumnDefault("1")
-    @JsonIgnore
-    private Integer delYn;
+    @Column(length = 100)
+    private String addressDetail;
+
+    @Column(nullable = false, length = 20)
+    private String name;
+
+    @Column(nullable = false, length = 11)
+    private String phone;
 }

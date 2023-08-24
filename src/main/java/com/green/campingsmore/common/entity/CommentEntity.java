@@ -1,5 +1,4 @@
-package com.green.campingsmore.common;
-
+package com.green.campingsmore.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -11,40 +10,33 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "board")
+@Table(name = "comment")
 @Data
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @SuperBuilder
-public class BoardEntity extends BaseEntity {
+@NoArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class CommentEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
-    private Long iboard;
+    private Long icomment;
+
+    @JoinColumn(name = "iboard")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private BoardEntity boardEntity;
 
     @JoinColumn(name = "iuser")
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private UserEntity userEntity;
 
-    @JoinColumn(name = "icategory")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private BoardCategoryEntity boardCategoryEntity;
+    @Column(nullable = false, length = 100)
+    private Long ctnt;
 
-    @Column(nullable = false, length = 20)
-    private String title;
-
-    @Column(nullable = false, length = 300)
-    private String ctnt;
-
-    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    @Column(length = 1, columnDefinition = "TINYINT")
     @ColumnDefault("1")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer delYn;
-
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
-    @ColumnDefault("0")
-    private Long boardView;
 }

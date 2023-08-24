@@ -1,4 +1,4 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,46 +11,37 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "review")
+@Table(name = "item")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @SuperBuilder
-public class ReviewEntity extends BaseEntity{
+public class ItemEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
-    private Long ireview;
+    private Long iitem;
 
-    @JoinColumn(name = "iuser")
+    @JoinColumn(name = "iitemCategory")
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity userEntity;
+    @ToString.Exclude
+    private ItemCategoryEntity itemCategoryEntity;
 
-    @JoinColumn(name = "iorder")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private OrderEntity orderEntity;
+    @Column(nullable = false, length = 100, name = "\"name\"")
+    private String name;
 
-    @JoinColumn(name = "iitem")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ItemEntity itemEntity;
+    @Column(nullable = false, columnDefinition = "INT UNSIGNED", length = 10)
+    private Long price;
+
+    @Column
+    private Long info;
 
     @Column(nullable = false, length = 200)
-    private String reviewCtnt;
-
-    @Column(length = 200)
-    private String pic;
-
-    @Column(nullable = false, columnDefinition = "TINY", length = 1)
-    @ColumnDefault("5")
-    private Integer starRating;
-
-    @Column(columnDefinition = "INT UNSIGNED", length = 10)
-    private Long reviewLike;
+    private Long pic;
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     @ColumnDefault("1")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer delYn;
-
 }

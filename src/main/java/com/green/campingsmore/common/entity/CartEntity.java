@@ -1,4 +1,4 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
 
 import jakarta.persistence.*;

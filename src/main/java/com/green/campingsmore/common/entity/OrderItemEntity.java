@@ -1,4 +1,4 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.scheduling.TaskScheduler;
 
 @Entity
 @Table(name = "order_item")

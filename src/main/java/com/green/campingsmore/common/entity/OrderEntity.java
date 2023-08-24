@@ -1,6 +1,5 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -11,33 +10,40 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "\"order\"")
 @Data
-@SuperBuilder
 @NoArgsConstructor
-@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class CommentEntity extends BaseEntity{
+@ToString(callSuper = true)
+@SuperBuilder
+public class OrderEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
-    private Long icomment;
-
-    @JoinColumn(name = "iboard")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private BoardEntity boardEntity;
+    private Long iorder;
 
     @JoinColumn(name = "iuser")
     @ManyToOne(fetch = FetchType.LAZY)
-    @ToString.Exclude
     private UserEntity userEntity;
 
     @Column(nullable = false, length = 100)
-    private Long ctnt;
+    private Long address;
 
-    @Column(length = 1, columnDefinition = "TINYINT")
+    @Column(length = 100)
+    private Long addressDetail;
+
+    @Column(nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 11)
+    private Long totalPrice;
+
+    @Column(length = 10, columnDefinition = "INT UNSIGNED")
+    @ColumnDefault("3000")
+    private Long shippingPrice;
+
+    @Column(length = 10, columnDefinition = "INT UNSIGNED")
+    private Long shippingMemo;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     @ColumnDefault("1")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Integer delYn;
+    private Long delYn;
 }

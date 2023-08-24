@@ -1,4 +1,4 @@
-package com.green.campingsmore.common;
+package com.green.campingsmore.common.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,22 +8,22 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "board_image")
 @Data
-@SuperBuilder
 @NoArgsConstructor
-@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class ItemDetailPicEntity extends BaseEntity{
+@ToString(callSuper = true)
+@SuperBuilder
+public class BoardImageEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
-    private Long idetail;
+    private Long iboardPic;
 
-    @JoinColumn(name = "iitem")
+    @JoinColumn(name = "iboard")
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
-    private ItemEntity itemEntity;
+    private BoardEntity boardEntity;
 
     @Column(nullable = false, length = 200)
     private String pic;
