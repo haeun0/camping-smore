@@ -23,7 +23,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class UserEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
     private Long iuser;
 
     @Column(nullable =false, length = 20)

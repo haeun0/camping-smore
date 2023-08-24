@@ -20,7 +20,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class ReviewEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
     private Long ireview;
 
     @JoinColumn(name = "iuser")
