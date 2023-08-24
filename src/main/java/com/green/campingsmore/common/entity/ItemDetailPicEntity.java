@@ -9,7 +9,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "item_detail_pic")
 @Data
 @SuperBuilder
 @NoArgsConstructor
