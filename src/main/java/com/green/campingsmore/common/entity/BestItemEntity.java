@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class BestItemEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 10)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
     private Long iitem;
 
     @Column(nullable = false, columnDefinition = "DATE")

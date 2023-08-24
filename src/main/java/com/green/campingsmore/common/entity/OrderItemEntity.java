@@ -35,7 +35,7 @@ public class OrderItemEntity extends BaseEntity{
     @ColumnDefault("1")
     private Long quantity;
 
-    @Column(nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 11)
+    @Column(nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
     private Long totalPrice;
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1)

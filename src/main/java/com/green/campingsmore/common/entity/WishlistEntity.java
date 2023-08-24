@@ -19,7 +19,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class WishlistEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
     private Long iwish;
 
     @JoinColumn(name = "iuser")

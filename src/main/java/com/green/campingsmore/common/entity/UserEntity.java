@@ -23,7 +23,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class UserEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
     private Long iuser;
 
     @Column(nullable =false, length = 20)
@@ -44,7 +44,7 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false, length = 11)
     private String phone;
 
-    @Column(nullable = false, length = 1, columnDefinition = "TINYINT CHECK (gender in (0,1)")
+    @Column(nullable = false, length = 1, columnDefinition = "TINYINT CHECK (gender in (0,1))")
     @ColumnDefault("0")
     private Long gender;
 
@@ -64,5 +64,5 @@ public class UserEntity extends BaseEntity {
     @Column(length = 1, columnDefinition = "TINYINT")
     @ColumnDefault("1")
     @JsonIgnore
-    private Long delYn;
+    private Integer delYn;
 }
