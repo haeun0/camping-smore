@@ -23,8 +23,9 @@ public class BestItemEntity extends BaseEntity {
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
     private Long id;
 
-    @JoinColumn(name = "")
-    private Long iitem;
+    @JoinColumn(name = "iitem")
+    @ManyToOne
+    private ItemEntity itemEntity;
 
     @Column(nullable = false, columnDefinition = "DATE")
     private LocalDate monthLike;
