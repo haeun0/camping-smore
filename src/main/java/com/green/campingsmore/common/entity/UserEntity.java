@@ -19,24 +19,24 @@ import org.hibernate.annotations.DynamicInsert;
 @DynamicInsert
 public class UserEntity extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment 설정
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 15)
     private Long iuser;
 
-    @Column(updatable = false,name = "user_id", nullable = false, length = 20)
+    @Column(name = "user_id",updatable = false, nullable = false, length = 20)
     private String userid;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false) // length 기본값 세팅 255임
     private String password;
 
-    @Column(nullable = false, length = 50)
-    @Size(min = 2, max = 50)
+    @Column(nullable = false, length = 100)
+    @Size(min = 10, max = 50)
     private String email;
 
     @Column(nullable = false,length = 20)
     private String name;
 
-    @Column(nullable = false,length = 20)
+    @Column(name = "birth_date",nullable = false,length = 10)
     private String birthDate;
 
     @Column(nullable = false,length = 11)
@@ -45,21 +45,23 @@ public class UserEntity extends BaseEntity {
     @Column(columnDefinition = "TINYINT not null CHECK(gender in (0,1))",length = 1)
     private Integer gender;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "user_address",nullable = false, length = 100)
     private String userAddress;
 
-    @Column(length = 100)
+    @Column(name = "user_address_detail", length = 100)
     private String userAddressDetail;
 
     @Column(nullable = false, length = 10)
-    @ColumnDefault("'USER'")
+    @ColumnDefault("'ROLE_USER'")
     private String role;
-
 
     private String pic;
 
-    @Column(length = 1, columnDefinition = "TINYINT")
+    @Column(name = "del_yn",length = 1, columnDefinition = "TINYINT")
     @ColumnDefault("1")
     @JsonIgnore
     private int delyn;
+
+    @Column(name = "wishlist_array") // null true는 기본값이라서 설정안해줘도 된다.
+    private String wishlistArray;
 }
