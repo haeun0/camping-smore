@@ -1,27 +1,27 @@
-//package com.green.campingsmore.common.config.security.oauth;
-//
-//import com.green.campingsmore.common.config.exception.OAuthProviderMissMatchException;
-//import com.green.campingsmore.common.config.security.model.ProviderType;
-//import com.green.campingsmore.common.config.security.model.RoleType;
-//import com.green.campingsmore.common.config.security.model.UserPrincipal;
-//import com.green.campingsmore.common.config.security.oauth.userinfo.OAuth2UserInfo;
-//import com.green.campingsmore.common.config.security.oauth.userinfo.OAuth2UserInfoFactory;
-//import com.green.campingsmore.common.entity.UserEntity;
-//import com.green.campingsmore.user.UserRepository;
-//import lombok.RequiredArgsConstructor;
-//import org.springframework.security.authentication.InternalAuthenticationServiceException;
-//import org.springframework.security.core.AuthenticationException;
-//import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-//import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-//import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-//import org.springframework.security.oauth2.core.user.OAuth2User;
-//import org.springframework.stereotype.Service;
-//
-//@Service
-//@RequiredArgsConstructor
-//public class CustomOAuth2UserService extends DefaultOAuth2UserService {
-//    private final UserRepository rep;
-//
+package com.green.campingsmore.common.config.security.oauth;
+
+import com.green.campingsmore.common.config.exception.OAuthProviderMissMatchException;
+import com.green.campingsmore.common.config.security.model.ProviderType;
+import com.green.campingsmore.common.config.security.model.RoleType;
+import com.green.campingsmore.common.config.security.model.UserPrincipal;
+import com.green.campingsmore.common.config.security.oauth.userinfo.OAuth2UserInfo;
+import com.green.campingsmore.common.config.security.oauth.userinfo.OAuth2UserInfoFactory;
+import com.green.campingsmore.common.entity.UserEntity;
+import com.green.campingsmore.user.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+    private final UserRepository rep;
+
 //    @Override
 //    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 //        OAuth2User user = super.loadUser(userRequest);
@@ -78,4 +78,4 @@
 //        }
 //        return user;
 //    }
-//}
+}
