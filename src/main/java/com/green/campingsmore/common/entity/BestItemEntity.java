@@ -20,7 +20,10 @@ import java.time.LocalDate;
 public class BestItemEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
+    private Long id;
+
+    @JoinColumn(name = "")
     private Long iitem;
 
     @Column(nullable = false, columnDefinition = "DATE")

@@ -41,8 +41,16 @@ public class ItemEntity extends BaseEntity {
     @Column(nullable = false, length = 200)
     private String pic;
 
+    @Column(columnDefinition = "INT UNSIGNED")
+    @ColumnDefault("0")
+    private Integer stock;
+
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    @ColumnDefault("2")
+    private Integer status; // 삭제(0) / 노출됨, 판매중(1) / 노출되지않음, 판매중지(2)
+
+/*    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     @ColumnDefault("1")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Integer delYn;
+    private Integer delYn;*/
 }

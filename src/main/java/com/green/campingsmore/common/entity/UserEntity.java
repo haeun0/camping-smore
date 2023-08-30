@@ -2,7 +2,10 @@ package com.green.campingsmore.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.green.campingsmore.common.config.jpa.BaseEntity;
+import com.green.campingsmore.common.security.ProviderType;
+import com.green.campingsmore.common.security.RoleType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -64,4 +67,15 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "wishlist_array") // null true는 기본값이라서 설정안해줘도 된다.
     private String wishlistArray;
+
+    @Column(name = "provider_type", nullable = false, length = 20)
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private ProviderType providerType;
+
+    @JsonIgnore
+    @Column(name = "role_type", length = 20)
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private RoleType roleType;
 }
