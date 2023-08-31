@@ -23,7 +23,7 @@ public class BestItemEntity extends BaseEntity {
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
     private Long id;
 
-    @JoinColumn(name = "")
+    @JoinColumn(name = "iitem")
     private Long iitem;
 
     @Column(nullable = false, columnDefinition = "DATE")

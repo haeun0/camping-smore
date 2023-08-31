@@ -21,7 +21,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class BoardEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
     private Long iboard;
 
     @JoinColumn(name = "iuser")

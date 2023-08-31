@@ -18,10 +18,10 @@ import lombok.experimental.SuperBuilder;
 public class BoardImageEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED", length = 20)
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
     private Long iboardPic;
 
-    @JoinColumn(name = "iboard")
+    @JoinColumn(name = "iboard",nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private BoardEntity boardEntity;

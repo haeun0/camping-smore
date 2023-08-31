@@ -23,6 +23,7 @@ public class BaseEntity {
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
+
     @JsonIgnore
     @LastModifiedDate
     private LocalDateTime updatedAt;
