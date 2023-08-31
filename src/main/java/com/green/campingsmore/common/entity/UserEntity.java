@@ -78,4 +78,5 @@ public class UserEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @NotNull
     private RoleType roleType;
+    
 }

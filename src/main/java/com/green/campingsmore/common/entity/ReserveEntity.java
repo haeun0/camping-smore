@@ -2,6 +2,7 @@ package com.green.campingsmore.common.entity;
 
 import com.green.campingsmore.common.config.jpa.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -48,10 +49,11 @@ public class ReserveEntity extends BaseEntity {
     private PayStatus payStatus;
 
     @ManyToOne
-    @JoinColumn(name = "camp_id")
+    @JoinColumn(name = "camp_id",nullable = false)
     private CampEntity campEntity;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @NotNull
     private UserEntity userEntity;
 }
