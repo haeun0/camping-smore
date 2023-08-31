@@ -27,7 +27,7 @@ public class UserEntity extends BaseEntity {
     private Long iuser;
 
     @Column(name = "user_id",updatable = false, nullable = false, length = 20)
-    private String userid;
+    private String uid;
 
     @Column(nullable = false) // length 기본값 세팅 255임
     private String password;
