@@ -4,6 +4,7 @@ package com.green.campingsmore.common.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.green.campingsmore.common.config.jpa.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,20 +22,23 @@ import org.hibernate.annotations.ColumnDefault;
 public class BoardEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
+    @Column(updatable = false, columnDefinition = "BIGINT UNSIGNED")
+    @NotNull
     private Long iboard;
 
     @JoinColumn(name = "iuser")
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
+    @NotNull
     private UserEntity userEntity;
 
     @JoinColumn(name = "icategory")
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
+    @NotNull
     private BoardCategoryEntity boardCategoryEntity;
 
-    @Column(nullable = false, length = 20)
+    @Column(length = 20)
     private String title;
 
     @Column(nullable = false, length = 300)
